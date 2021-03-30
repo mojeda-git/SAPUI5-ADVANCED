@@ -1,0 +1,20 @@
+{
+  "tasks": [
+    {
+      "type": "npm",
+      "script": "build",
+      "path": "Employees/",
+      "group": "build",
+      "label": "npm: build - Employees"
+    },
+    {
+      "label": "Build logali",
+      "type": "shell",
+      "command": "if [ ! -f ${workspaceFolder}/logali-approuter/node_modules/@sap/html5-repo-mock/index.js ] || [ ! -f ${workspaceFolder}/logali-approuter/node_modules/@sap/approuter/approuter.js ]; then npm i @sap/approuter && npm i @sap/html5-repo-mock; fi",
+      "options": {
+        "cwd": "${workspaceFolder}/logali-approuter"
+      }
+    }
+  ],
+  "version": "2.0.0"
+}
