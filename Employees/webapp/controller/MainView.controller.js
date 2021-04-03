@@ -60,20 +60,27 @@ sap.ui.define([
                 var filters = [];
 
                 if (oJSON.EmployeeId !== "") {
-                    filters.push( new Filter("EmployeeID",FilterOperator.EQ,oJSON.EmployeeId ));
+                    filters.push(new Filter("EmployeeID", FilterOperator.EQ, oJSON.EmployeeId));
                 }
                 if (oJSON.CountryKey !== "") {
-                    filters.push( new Filter("Country",FilterOperator.EQ,oJSON.CountryKey ));
+                    filters.push(new Filter("Country", FilterOperator.EQ, oJSON.CountryKey));
                 }
 
                 var oList = this.getView().byId("tableEmployee");
                 var oBinding = oList.getBinding("items");
                 oBinding.filter(filters);
             },
-            onClearFilter: function(){
-                var oModel =  this.getView().getModel();
-                    oModel.setProperty("/EmployeeId", "");
-                    oModel.setProperty("/CountryKey", "");
+            onClearFilter: function () {
+                var oModel = this.getView().getModel();
+                oModel.setProperty("/EmployeeId", "");
+                oModel.setProperty("/CountryKey", "");
+            },
+            showPostalCode: function (oEvent) {
+                var itemPressed = oEvent.getSource();
+                var oContext = itemPressed.getBindingContext();
+                var objectContext = oContext.getObject();
+
+                sap.m.MessageToast.show(objectContext.PostalCode);
             }
         });
     });
